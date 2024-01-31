@@ -1,0 +1,15 @@
+services:
+  php:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app:/var/www/html
+    links:
+      - db
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=elitgroup
+      - POSTGRES_USER=elitgroup
