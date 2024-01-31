@@ -1,4 +1,5 @@
-#Teste ElitGroup
+# Etapa 1 Teste ElitGroup
+## A etapa 2 é o código
 
 ## 1. Inserir um código em Javascript no site de usuários da BigCommerce
 ### Existem algumas formas de inserir scripts num storefront page, uma delas por meio do painel de controle e outra por meio da API REST que é nosso objetivo.
