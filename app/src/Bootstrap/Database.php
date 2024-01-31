@@ -31,7 +31,7 @@ class Database
             $this->pdo = new PDO($dsn);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            die("Erro na conexão com o banco de dados: " . $e->getMessage());
+            die("Failed to connect to database: " . $e->getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ class Database
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            die("Erro na execução da consulta: " . $e->getMessage());
+            die("Failed to execute query: " . $e->getMessage());
         }
     }
 }

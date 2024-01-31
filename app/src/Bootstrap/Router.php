@@ -7,7 +7,7 @@ class Router
     protected $routes = [];
     protected $middlewares = [];
 
-    // Adiciona uma rota ao array de rotas
+    // Add a route to the router
     public function addRoute($method, $route, $controller)
     {
         $this->routes[] = [
@@ -20,7 +20,7 @@ class Router
     {
         $this->middlewares[] = $middleware;
     }
-    // Encontra a rota correspondente para a solicitação atual
+    // Find a route and call the controller
     function matchRoute($method, $uri)
     {
         foreach ($this->routes as $route) {
@@ -36,6 +36,7 @@ class Router
         return;
     }
 
+    // Call all middlewares in order
     function callMiddlewares()
     {
         if (empty($this->middlewares)) {
@@ -43,33 +44,19 @@ class Router
         }
 
         $status = false;
-        // Chama todos os middlewares
         foreach ($this->middlewares as $middleware) {
             $status = call_user_func_array($middleware, []);
         }
         return $status;
     }
+    // Return a response with JSON
     function response($data, $status = 200)
     {
         http_response_code($status);
         echo json_encode($data);
     }
 
-    function getHeaders(): array
-    {
-        $headers = [];
-
-        foreach ($_SERVER as $nome => $valor) {
-            if (substr($nome, 0, 5) === 'HTTP_') {
-                // Converte o nome do header para o formato correto
-                $nomeHeader = str_replace(' ', '-', ucwords(str_replace('_', ' ', strtolower(substr($nome, 5)))));
-                $headers[$nomeHeader] = $valor;
-            }
-        }
-
-        return $headers;
-    }
-
+    // Get the bearer token from the request
     function getBearerToken()
     {
         $headers = apache_request_headers();
