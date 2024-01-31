@@ -10,6 +10,8 @@ services:
       - db
   db:
     image: postgres
+    volumes:
+      - ./init-scripts/:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_PASSWORD=elitgroup
       - POSTGRES_USER=elitgroup
