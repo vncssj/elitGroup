@@ -23,7 +23,6 @@ $router->addRoute('GET', '/', function () {
 // Route to get all types
 $router->addRoute('GET', '/tiposAtendimentos', function () use ($router) {
 
-    $result = (new TiposAtendimentosController())
+    $result = (new TiposAtendimentosController($router))
         ->getAll();
-    $router->response($result);
 });

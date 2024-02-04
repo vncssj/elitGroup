@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Controllers\\TiposAtendimentosControllerTest::testGetAll":3,"Warning":6},"times":{"Tests\\Controllers\\TiposAtendimentosControllerTest::testGetAll":0.012,"Warning":0,"Tests\\Controllers\\TiposAtendimentosControllerTest::testRoot":0.013}}
